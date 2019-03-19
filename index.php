@@ -1,11 +1,14 @@
 <?php
 
 include 'src/Router.php';
-include 'controllers/MainController.php';
+include 'src/AbstractController.php';
+include 'src/MysqlDbProvider.php';
+include 'controllers/FilmsController.php';
+include 'models/FilmsParser.php';
 
 $r = new Router();
-$r->addRoute(new MainController());
+$r->addRoute(new FilmsController());
 
-$r->redirect($_SERVER['PATH_INFO']);
+$r->redirect($_SERVER['PATH_INFO'] ?? '/films/list');
 
  ?>

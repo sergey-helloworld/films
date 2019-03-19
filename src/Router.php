@@ -18,7 +18,7 @@ class Router
     foreach ($this->routes as $route) {
       if(strcasecmp(str_replace('Controller', '', get_class($route)), $path[0]) == 0)
       {
-        unset($path[0]);
+        array_splice($path, 0, 1);
         $route->handleRoute($path);
       }
     }
